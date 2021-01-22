@@ -1,1 +1,2 @@
-# config
+# Config
+My own config files
