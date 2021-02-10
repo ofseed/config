@@ -1,3 +1,11 @@
+" *
+" Created by 1478zhcy on January 13, 2021.
+" The purpose of writing this configuration
+" file is to unify the experience of using
+" Vim and Neovim on different platforms
+" according to my personal preferences.
+" *
+
 "Edit config
 set expandtab
 set softtabstop=4
