@@ -29,7 +29,7 @@ set termguicolors
 set noshowmode
 if has('win32')
     set guifont=Cascadia\ Code\ PL:h10.5
-    set guifontwide=新宋体:h10.5
+    set guifontwide=黑体:h10.5
 endif
 
 "Unicode config
@@ -63,8 +63,8 @@ source $VIMRUNTIME/menu.vim
 "Terminal config
 if !has('nvim')
     set termwinsize=8x0
+    map <F1> :rightbelow terminal pwsh<CR>
 endif
-map <F1> :rightbelow terminal pwsh<CR>
 
 call plug#begin()
 Plug 'vim-airline/vim-airline'
@@ -74,7 +74,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
 call plug#end()
 
 colorscheme dracula
@@ -87,9 +86,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 "NERDTree config
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
-map <F2> :NERDTreeToggle %<CR>
+map <Leader>e :NERDTreeToggle %<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree ~
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 "CoC config
