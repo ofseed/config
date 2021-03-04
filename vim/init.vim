@@ -138,5 +138,6 @@ let g:coc_global_extensions = [
     \ 'coc-java',
     \ 'coc-pyright',
     \ 'coc-jedi',
-    \ 'coc-html'
+    \ 'coc-html',
+    \ 'coc-rust-analyzer'
     \]
