@@ -13,6 +13,7 @@ set shiftwidth=4
 set autochdir
 set nobackup
 set noswapfile
+set ignorecase
 set nocompatible
 
 "UI config
@@ -27,6 +28,13 @@ set laststatus=2
 set belloff=all
 set termguicolors
 set noshowmode
+if !has('nvim')
+    set cursorline
+    set cursorlineopt=number
+    let &t_SI.="\e[5 q"
+    let &t_SR.="\e[4 q"
+    let &t_EI.="\e[1 q"
+endif
 if has('win32')
     set guifont=Cascadia\ Code\ PL:h10.5
     set guifontwide=黑体:h10.5
@@ -73,7 +81,10 @@ Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'tpope/vim-fugitive'
 call plug#end()
 
 colorscheme dracula
@@ -88,8 +99,10 @@ let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 map <Leader>e :NERDTreeToggle %<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree ~
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+"FZF config
+nnoremap <Leader>f :FZF<CR>
 
 "CoC config
 "    Use tab for trigger completion with characters ahead and navigate
@@ -114,8 +127,8 @@ function! s:show_documentation()
   endif
 endfunction
 "    Formatting selected code.
-xmap <Leader>f <Plug>(coc-format-selected)
-nmap <Leader>f <Plug>(coc-format-selected)
+xmap <Leader>F <Plug>(coc-format-selected)<CR>
+nmap <Leader>F <Plug>(coc-format-selected)<CR>
 augroup mygroup
   autocmd!
 "    Setup formatexpr specified filetype(s).
