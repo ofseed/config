@@ -21,6 +21,7 @@ syntax on
 set number
 set wrap
 set linebreak
+set hlsearch
 set ruler
 set mouse=a
 set showcmd
@@ -28,6 +29,7 @@ set laststatus=2
 set belloff=all
 set termguicolors
 set noshowmode
+set wildmenu
 if !has('nvim')
     set cursorline
     set cursorlineopt=number
@@ -79,7 +81,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/goyo.vim'
+Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -88,6 +93,31 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme dracula
+
+"Startify config
+let g:startify_custom_header = [
+    \' ╭───────────────────────────────────────────────╮ ',
+    \' │                                               │ ',
+    \' │    ███     ███  ████      ███       ███       │ ',
+    \' │   ░░██    ░██  ░░██      ██░██    ░██░██      │ ',
+    \' │    ░██    ░██   ░██     ░██░██    ░██░██      │ ',
+    \' │    ░░██   ██    ░██     ██ ░░██   ██ ░░██     │ ',
+    \' │     ░██  ░██    ░██    ░██  ░██  ░██  ░██     │ ',
+    \' │     ░░██ ██     ░██    ██   ░░██ ██   ░░██    │ ',
+    \' │      ░██░██     ░██   ░██    ░██░██    ░██    │ ',
+    \' │      ░░███      ████  ████   ░░███     ████   │ ',
+    \' │       ░░░      ░░░   ░░░░     ░░░     ░░░░    │ ',
+    \' │                            Ultimate editor.   │ ',
+    \' ╰───────────────────────────────────────────────╯ ',
+    \]
+let g:startify_files_number = 5
+let g:startify_session_autoload = 1
+let g:startify_lists = [
+    \ { 'type': 'files',     'header': ['   Files']                        },
+    \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+    \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+    \ ]
 
 "AirLine config
 let g:airline_powerline_fonts = 1
@@ -100,6 +130,18 @@ let NERDTreeShowHidden = 1
 map <Leader>e :NERDTreeToggle %<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \}
 
 "FZF config
 nnoremap <Leader>f :FZF<CR>
@@ -144,6 +186,8 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 let g:coc_global_extensions = [
     \ 'coc-git',
+    \ 'coc-highlight',
+    \ 'coc-fzf-preview',
     \ 'coc-json',
     \ 'coc-vimlsp',
     \ 'coc-clangd',
@@ -152,5 +196,6 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-jedi',
     \ 'coc-html',
+    \ 'coc-prettier',
     \ 'coc-rust-analyzer'
     \]
