@@ -33,9 +33,9 @@ set wildmenu
 if !has('nvim')
     set cursorline
     set cursorlineopt=number
-    let &t_SI.="\e[5 q"
-    let &t_SR.="\e[4 q"
-    let &t_EI.="\e[1 q"
+"    let &t_SI.="\e[5 q"
+"    let &t_SR.="\e[4 q"
+"    let &t_EI.="\e[1 q"
 endif
 if has('win32')
     set guifont=Cascadia\ Code\ PL:h10.5
@@ -81,10 +81,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -112,12 +111,6 @@ let g:startify_custom_header = [
     \]
 let g:startify_files_number = 5
 let g:startify_session_autoload = 1
-let g:startify_lists = [
-    \ { 'type': 'files',     'header': ['   Files']                        },
-    \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-    \ { 'type': 'sessions',  'header': ['   Sessions']                     },
-    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
-    \ ]
 
 "AirLine config
 let g:airline_powerline_fonts = 1
@@ -196,6 +189,7 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-jedi',
     \ 'coc-html',
+    \ 'coc-phpls',
     \ 'coc-prettier',
     \ 'coc-rust-analyzer'
     \]
