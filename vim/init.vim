@@ -30,6 +30,7 @@ set belloff=all
 set termguicolors
 set noshowmode
 set wildmenu
+set title
 if !has('nvim')
     set cursorline
     set cursorlineopt=number
@@ -39,7 +40,11 @@ if !has('nvim')
 endif
 if has('win32')
     set guifont=Cascadia\ Code\ PL:h10.5
-    set guifontwide=黑体:h10.5
+    if !has('nvim')
+        set guifontwide=黑体:h10.5
+    else
+        set guifontwide=思源雅黑:h11
+    endif
 endif
 
 "Unicode config
