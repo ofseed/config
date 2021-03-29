@@ -92,6 +92,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'tpope/vim-fugitive'
 call plug#end()
@@ -143,6 +144,23 @@ let g:NERDTreeIndicatorMapCustom = {
 
 "FZF config
 nnoremap <Leader>f :FZF<CR>
+
+"VimTeX config
+let g:tex_flavor = 'latex'
+let g:vimtex_quickfix_mode = 0
+if has('unix')
+    let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_view_method = 'zathura'
+endif
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_toc_config = {
+\ 'name' : 'TOC',
+\ 'layers' : ['content', 'todo', 'include'],
+\ 'split_width' : 25,
+\ 'todo_sorted' : 0,
+\ 'show_help' : 1,
+\ 'show_numbers' : 1,
+\}
 
 "CoC config
 "    Use tab for trigger completion with characters ahead and navigate
@@ -196,5 +214,6 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-phpls',
     \ 'coc-prettier',
-    \ 'coc-rust-analyzer'
+    \ 'coc-rust-analyzer',
+    \ 'coc-vimtex'
     \]
