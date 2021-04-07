@@ -146,12 +146,15 @@ let g:NERDTreeIndicatorMapCustom = {
 nnoremap <Leader>f :FZF<CR>
 
 "VimTeX config
+set conceallevel=1
 let g:tex_flavor = 'latex'
 let g:vimtex_quickfix_mode = 0
 if has('unix')
     let g:vimtex_view_general_viewer = 'zathura'
     let g:vimtex_view_method = 'zathura'
 endif
+let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
+let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_toc_config = {
 \ 'name' : 'TOC',
