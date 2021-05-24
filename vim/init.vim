@@ -243,6 +243,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 let g:coc_global_extensions = [
     \ 'coc-git',
     \ 'coc-highlight',
+    \ 'coc-snippets',
     \ 'coc-fzf-preview',
     \ 'coc-spell-checker',
     \ 'coc-json',
