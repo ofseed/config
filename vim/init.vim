@@ -253,6 +253,8 @@ let g:coc_global_extensions = [
     \ 'coc-java',
     \ 'coc-pyright',
     \ 'coc-html',
+    \ 'coc-tsserver',
+    \ 'coc-go',
     \ 'coc-phpls',
     \ 'coc-prettier',
     \ 'coc-rust-analyzer',
