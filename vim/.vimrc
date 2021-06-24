@@ -92,8 +92,8 @@ endif
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'michaeljsmith/vim-indent-object'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
@@ -265,6 +265,7 @@ let g:coc_global_extensions = [
     \ 'coc-spell-checker',
     \ 'coc-json',
     \ 'coc-vimlsp',
+    \ 'coc-lua',
     \ 'coc-clangd',
     \ 'coc-cmake',
     \ 'coc-java',
@@ -275,5 +276,6 @@ let g:coc_global_extensions = [
     \ 'coc-phpls',
     \ 'coc-prettier',
     \ 'coc-rust-analyzer',
-    \ 'coc-vimtex'
+    \ 'coc-sh',
+    \ 'coc-texlab'
     \]
