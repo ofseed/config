@@ -39,8 +39,8 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+set cursorline
 if !has('nvim')
-    set cursorline
     set cursorlineopt=number
 "    let &t_SI.="\e[5 q"
 "    let &t_SR.="\e[4 q"
@@ -93,7 +93,9 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ryanoasis/vim-devicons'
 "Plug 'michaeljsmith/vim-indent-object'
+Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
@@ -125,6 +127,10 @@ let g:startify_custom_header = [
     \]
 let g:startify_files_number = 5
 let g:startify_session_autoload = 1
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+
 
 "AirLine config
 let g:airline_powerline_fonts = 0
