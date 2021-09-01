@@ -1,0 +1,8 @@
+---
+name: extended
+version: "2021.09.01"
+sort: by_weight
+ue_preset_vocabulary: true
+
+import_tables:
+  - zhwiki
