@@ -1,22 +1,19 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.3
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Fri Sep  3 01:39:47 2021"
+  rime_version: 1.5.3
 patch:
   style:
     color_scheme: aqua
-    font_face: Microsoft YaHei
-    font_point: 14
-    horizontal: true
-    fullscreen: false
-    inline_preedit: false
-    preedit_type: composition
     display_tray_icon: false
+    font_face: "Microsoft YaHei"
+    font_point: 14
+    fullscreen: false
+    horizontal: false
+    inline_preedit: true
     label_format: "%s."
-    layout:
-      min_width: 160
-      min_height: 0
-      border_width: 3
-      margin_x: 12
-      margin_y: 12
-      spacing: 10
-      candidate_spacing: 5
-      hilite_spacing: 4
-      hilite_padding: 2
-      round_corner: 4
+    layout: {border_width: 0, candidate_spacing: 5, hilite_padding: 2, hilite_spacing: 4, margin_x: 8, margin_y: 8, min_height: 0, min_width: 80, round_corner: 4, spacing: 10}
+    preedit_type: composition
+  "style/color_scheme": steam
