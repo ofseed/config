@@ -1,0 +1,174 @@
+set $mod Mod4
+
+font pango:monospace 8
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+assign [class="yesplaymusic"] $ws10
+
+bindsym $mod+Shift+q kill
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+semicolon split h
+bindsym $mod+v split v
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+floating_modifier $mod
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+c move absolute position center
+bindsym $mod+a focus parent
+
+for_window [class="Pavucontrol"] floating enable sticky enable border normal
+for_window [class="Blueman-manager"] floating enable sticky enable border normal
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="fcitx5-config-qt"] floating enable sticky enable border normal
+for_window [class="Piper"] floating enable sticky enable border normal
+for_window [class="flameshot"] floating enable sticky enable border normal
+for_window [class="Thunar"] floating enable sticky enable border normal
+for_window [class="VirtualBox Manager"] floating enable sticky enable border normal
+for_window [class="Uget-gtk"] floating enable sticky enable border normal
+for_window [class="kdeconnect.app"] floating enable sticky enable border normal
+for_window [class="Gtick"] floating enable sticky enable border normal
+
+for_window [urgent=latest] focus
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+exec_always --no-startup-id dex -a
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/1.png
+exec_always --no-startup-id picom --experimental-backends
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 8+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 8-
+bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl --device="asus::kbd_backlight" set 1+
+bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl --device="asus::kbd_backlight" set 1-
+bindsym XF86Launch4 exec --no-startup-id asusctl profile -n
+
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+q exec --no-startup-id firefox
+bindsym $mod+m exec --no-startup-id yesplaymusic
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
+
+default_border pixel 1
+gaps inner 14
+gaps outer -2
+smart_gaps on
+smart_borders on
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+bar {
+        status_command      i3status
+        position            top
+        workspace_buttons   yes
+        colors {
+            background #282A36
+            statusline #F8F8F2
+            separator  #44475A
+
+            focused_workspace  #44475A #44475A #F8F8F2
+            active_workspace   #282A36 #44475A #F8F8F2
+            inactive_workspace #282A36 #282A36 #BFBFBF
+            urgent_workspace   #FF5555 #FF5555 #F8F8F2
+            binding_mode       #FF5555 #FF5555 #F8F8F2
+       }
+}
+
