@@ -140,40 +140,32 @@ bindsym $mod+q exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id yesplaymusic
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
 
-default_border pixel 1
+default_border pixel 3
 gaps inner 14
 gaps outer -2
 smart_gaps on
 smart_borders on
 
-# Dracula theme
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
+client.focused          #626262 #626262 #F8F8F2 #626262   #626262
+client.focused_inactive #424242 #424242 #F8F8F2 #424242   #424242
+client.unfocused        #272727 #272727 #BFBFBF #272727   #272727
+client.urgent           #424242 #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #272727 #272727 #F8F8F2 #272727   #272727
 client.background       #F8F8F2
-
-# Tokyonight theme
-# class                 border  bground text    indicator child_border
-#client.focused          #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
-#client.focused_inactive #16161d #16161d #c0caf5 #16161d   #16161d
-#client.unfocused        #16161d #16161d #c0caf5 #16161d   #16161d
 
 bar {
         status_command      i3status
         position            top
         workspace_buttons   yes
         colors {
-            background #282A36
+            background #272727
             statusline #F8F8F2
-            separator  #44475A
+            separator  #424242
 
-            focused_workspace  #44475A #44475A #F8F8F2
-            active_workspace   #282A36 #44475A #F8F8F2
-            inactive_workspace #282A36 #282A36 #BFBFBF
+            focused_workspace  #424242 #424242 #F8F8F2
+            active_workspace   #272727 #424242 #F8F8F2
+            inactive_workspace #272727 #272727 #BFBFBF
             urgent_workspace   #FF5555 #FF5555 #F8F8F2
             binding_mode       #FF5555 #FF5555 #F8F8F2
        }
