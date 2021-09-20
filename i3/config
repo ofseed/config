@@ -117,7 +117,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id dex -a
 exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/1.png
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/1.png
 exec_always --no-startup-id picom --experimental-backends
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
