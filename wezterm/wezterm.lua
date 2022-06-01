@@ -9,7 +9,7 @@ return {
       harfbuzz_features = { "ss01" },
     },
     {
-      family = "Cascadia CodeL",
+      family = "Cascadia Code",
       harfbuzz_features = { "ss01" },
     },
     "Symbols Nerd Font",
