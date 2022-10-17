@@ -19,7 +19,6 @@ return {
   font_size = 14,
   custom_block_glyphs = false,
   freetype_load_target = "HorizontalLcd",
-  default_cursor_style = "BlinkingBar",
   cursor_blink_rate = 0,
   color_scheme = "catppuccin",
   colors = require "catppuccin",
