@@ -23,8 +23,8 @@ return {
   cursor_blink_rate = 0,
   color_scheme = "catppuccin",
   colors = require "catppuccin",
-  initial_cols = 120,
-  initial_rows = 50,
+  initial_cols = 100,
+  initial_rows = 45,
   -- window_decorations = "RESIZE",
   window_padding = {
     left = 0,
