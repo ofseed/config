@@ -18,6 +18,7 @@ return {
   },
   font_size = 14,
   custom_block_glyphs = false,
+  warn_about_missing_glyphs = false,
   freetype_load_target = "HorizontalLcd",
   cursor_blink_rate = 0,
   color_scheme = "catppuccin",
